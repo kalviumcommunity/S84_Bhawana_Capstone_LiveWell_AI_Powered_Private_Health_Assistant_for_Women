@@ -1,7 +1,7 @@
 # 💡 LiveWell – AI-Powered Private Health Assistant for Women
 
 ## 📌 Vision
-LiveWell aims to become a private and personalized digital health companion for women. It focuses on providing non-judgmental, AI-powered health guidance on sensitive issues such as unwanted pregnancy, contraceptives, menstrual care, and breast health — ensuring inclusivity, confidentiality, and data privacy at every step.
+LiveWell aims to become a private and personalized digital health companion for women. It focuses on providing non-judgmental, AI-powered health guidance on sensitive issues such as unwanted pregnancy, contraceptives, menstrual care, and breast health based on the information provided by the users — ensuring inclusivity, confidentiality, and data privacy at every step.
 
 ---
 
