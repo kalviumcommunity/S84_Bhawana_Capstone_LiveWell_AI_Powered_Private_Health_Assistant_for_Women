@@ -83,8 +83,8 @@ LiveWell is designed to be stigma-free, inclusive, and user-friendly for young w
 
 ### 🗓️ Week 2: Setup & Hi-Fi UI
 - **Day 8-9:** Figma-based UI design
-- **Day 10:** Initialize React + Tailwind
-- **Day 11-12:** GitHub project setup, backend init
+- **Day 10:** Initializeproject React + Tailwind
+- **Day 11-12:** GitHub  setup, backend init
 - **Day 13:** Push boilerplate
 - **Day 14:** Submit proof of setup
 
