@@ -5,9 +5,12 @@ const HealthProfile = require('../models/healthProfile');
 // Create/Update health profile
 router.post('/profiles', async (req, res) => {
   try {
+    const { userId, height, weight, bloodType, lastMenstrualDate, cycleLength, contraceptiveUse, allergies } = req.body;
+    const profileData = { userId, height, weight, bloodType, lastMenstrualDate, cycleLength, contraceptiveUse, allergies };
+    
     const profile = await HealthProfile.findOneAndUpdate(
-      { userId: req.body.userId },
-      req.body,
+      { userId: userId },
+      profileData,
       { new: true, upsert: true }
     );
     res.status(200).json(profile);
