@@ -1,23 +1,35 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const userRoutes = require('./routes/api');
-const healthRoutes = require('./routes/healthProfile');
 require('dotenv').config();
 
-const app = express();
-app.use(express.json());
+const userRoutes = require('./routes/api');
+const healthRoutes = require('./routes/healthProfile');
+const consultationRoutes = require('./routes/consultation');
 
-// Connect routes
+const app = express(); // ✅ Define `app` first
+app.use(express.json()); // Middleware
+
+// ✅ Now safely use app.use(...)
 app.use('/api/users', userRoutes);
 app.use('/api/health', healthRoutes);
+app.use('/api/consultations', consultationRoutes);
 
-// Connect MongoDB and then start server
-mongoose.connect(process.env.MONGO_URI)
+// MongoDB Connection and Server Start
+const PORT = process.env.PORT || 3000;
+const MONGO_URI = process.env.MONGO_URI;
+
+mongoose.connect(MONGO_URI)
   .then(() => {
-    const PORT = process.env.PORT || 3000;
+    console.log(`✅ MongoDB connected: ${mongoose.connection.host}`);
     app.listen(PORT, () => {
-      console.log(`✅ Server running on port ${PORT}`);
-      console.log(`✅ MongoDB connected: ${mongoose.connection.host}`);
+      console.log(`✅ Server running on http://localhost:${PORT}`);
     });
   })
-  .catch(err => console.error('❌ MongoDB connection error:', err));
+  .catch(err => {
+    console.error('❌ MongoDB connection error:', err.message);
+  });
+
+// Test route
+app.get('/', (req, res) => {
+  res.send('🚀 LiveWell API is running');
+});
