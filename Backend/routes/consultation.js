@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
 // GET (Read)
 router.get("/", async (req, res) => {
   try {
-    const consultations = await Consultation.find();
+    const consultations = await Consultation.find().populate('userId', 'name email age gender');
     res.status(200).json(consultations);
   } catch (err) {
     res.status(500).json({ error: err.message });
