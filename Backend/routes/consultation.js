@@ -22,7 +22,11 @@ router.post("/", async (req, res) => {
 // GET (Read)
 router.get("/", async (req, res) => {
   try {
-    const consultations = await Consultation.find();
+    const consultations = await Consultation.find().populate({
+      path: 'userId',
+      select: 'name email age gender',
+      options: { strictPopulate: false }
+    });
     res.status(200).json(consultations);
   } catch (err) {
     res.status(500).json({ error: err.message });

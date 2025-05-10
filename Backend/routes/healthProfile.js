@@ -39,7 +39,7 @@ router.get('/profiles/:userId', async (req, res) => {
   router.get('/profiles/:userId', async (req, res) => {
  main
     try {
-      const profile = await HealthProfile.findOne({ userId: req.params.userId });
+      const profile = await HealthProfile.findOne({ userId: req.params.userId }).populate('userId', 'name email age gender');
       if (!profile) {
         return res.status(404).json({ message: 'Health profile not found' });
       }
