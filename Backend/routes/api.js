@@ -4,7 +4,7 @@ const User = require('../models/User'); // Adjust path as needed
 const bcrypt = require('bcryptjs');
 
 // GET all users
-router.get('/users', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const users = await User.find({}, '-password'); 
     res.status(200).json(users);
@@ -13,7 +13,7 @@ router.get('/users', async (req, res) => {
   }
 });
 
-router.post('/users', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
       const { name, email, password, age, gender, role } = req.body;
       if (!name || !email || !password) {
@@ -51,7 +51,7 @@ router.post('/users', async (req, res) => {
     }
   });
 
-  router.put('/users/:id', async (req, res) => {
+  router.put('/:id', async (req, res) => {
     try {
       const { name, email, password, age, gender, role } = req.body;
       const { id } = req.params;
