@@ -16,6 +16,12 @@ function ChatInput() {
     }
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSend();
+    }
+  };
+
   return (
     <div className="flex items-center border rounded-xl p-2 mt-4 shadow">
       <input
