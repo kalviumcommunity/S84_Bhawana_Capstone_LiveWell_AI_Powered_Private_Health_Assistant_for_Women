@@ -5,6 +5,12 @@ const Consultation = require("../models/Consultation");
 // POST (Write)
 router.post("/", async (req, res) => {
   try {
+    const { patientId, doctorId, date, reason } = req.body;
+    
+    if (!patientId || !doctorId || !date) {
+      return res.status(400).json({ error: "Patient ID, doctor ID, and date are required" });
+    }
+    
     const newConsultation = new Consultation(req.body);
     await newConsultation.save();
     res.status(201).json(newConsultation);
